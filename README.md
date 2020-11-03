@@ -2,6 +2,9 @@
 
   A microservice based project using [netflix oss](https://netflix.github.io/).
 
+![GitHub All Releases](https://img.shields.io/github/downloads/FourmiPanda/amisno-docker-bootstrap/total)
+![GitHub issues](https://img.shields.io/github/issues/FourmiPanda/amisno-docker-bootstrap)
+
 
 ## Installation
 
