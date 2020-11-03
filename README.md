@@ -5,6 +5,12 @@
 ![GitHub All Releases](https://img.shields.io/github/downloads/FourmiPanda/amisno-docker-bootstrap/total)
 ![GitHub issues](https://img.shields.io/github/issues/FourmiPanda/amisno-docker-bootstrap)
 
+## Service Architecture
+
+**AMiSNO** is composed of many microservices written in different languages that talk to each other over http.
+
+[![Architecture of
+microservices](images/archi.png)](images/archi.png)
 
 ## Installation
 
