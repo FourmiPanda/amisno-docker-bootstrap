@@ -40,7 +40,7 @@ for more information.
 ## Docs & Community
 
   * [Docker](https://www.docker.com/) for documentation about docker
-  * [Gitter](https://microservices.io/) for documentation about microservices
+  * [Microservices](https://microservices.io/) for documentation about microservices
 
 ### Security Issues
 
