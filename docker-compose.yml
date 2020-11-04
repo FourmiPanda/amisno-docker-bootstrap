@@ -6,14 +6,34 @@ services:
       - 9101
     ports:
       - 9101:9101
+    healthcheck:
+      test: curl -v --silent http://amisno-config-server:9101/actuator/health 2>&1 | grep UP
+      timeout: 5s
+      interval: 5s
+      retries: 10
   amisno-cloud-gateway:
-    image: fourmipanda/amisno-cloud-gateway:1.0.0
+    image: fourmipanda/amisno-cloud-gateway:latest
     expose:
       - 9102
     ports:
       - 9102:9102
+    healthcheck:
+      test: curl -v --silent http://amisno-cloud-gateway:9102/actuator/health 2>&1 | grep UP
+      timeout: 5s
+      interval: 30s
+      retries: 3
     depends_on:
-      - amisno-config-server
+      amisno-config-server:
+        condition: service_healthy
+  amisno-infra-eureka:
+    image: fourmipanda/amisno-infra-eureka:latest
+    expose:
+      - 9103
+    ports:
+      - 9103:9103
+    depends_on:
+      amisno-config-server:
+        condition: service_healthy
   amisno-order-service:
     image: fourmipanda/amisno-order-service:latest
     expose:
@@ -21,5 +41,7 @@ services:
     ports:
       - 8081:8081
     depends_on:
-      - amisno-config-server
-      - amisno-cloud-gateway
+      amisno-config-server:
+        condition: service_healthy
+      amisno-cloud-gateway:
+        condition: service_healthy
