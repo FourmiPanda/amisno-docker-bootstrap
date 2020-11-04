@@ -1,14 +1,25 @@
 version: '2.4'
 services:
+  amisno-config-server:
+    image: fourmipanda/amisno-config-server:latest
+    expose:
+      - 9101
+    ports:
+      - 9101:9101
   amisno-cloud-gateway:
     image: fourmipanda/amisno-cloud-gateway:1.0.0
     expose:
-      - 8080
+      - 9102
     ports:
-      - 9000:8080
+      - 9102:9102
+    depends_on:
+      - amisno-config-server
   amisno-order-service:
     image: fourmipanda/amisno-order-service:latest
     expose:
       - 8081
     ports:
-      - 8080:8081
+      - 8081:8081
+    depends_on:
+      - amisno-config-server
+      - amisno-cloud-gateway
