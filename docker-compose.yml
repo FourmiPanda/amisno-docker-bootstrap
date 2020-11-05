@@ -1,5 +1,11 @@
 version: '2.4'
 services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: toor
   amisno-config-server:
     image: fourmipanda/amisno-config-server:latest
     expose:
@@ -20,8 +26,8 @@ services:
     healthcheck:
       test: curl -v --silent http://amisno-cloud-gateway:9102/actuator/health 2>&1 | grep UP
       timeout: 5s
-      interval: 30s
-      retries: 3
+      interval: 5s
+      retries: 10
     depends_on:
       amisno-config-server:
         condition: service_healthy
@@ -31,6 +37,11 @@ services:
       - 9103
     ports:
       - 9103:9103
+    healthcheck:
+      test: curl -v --silent http://amisno-infra-eureka:9103/actuator/health 2>&1 | grep UP
+      timeout: 5s
+      interval: 5s
+      retries: 10
     depends_on:
       amisno-config-server:
         condition: service_healthy
@@ -41,7 +52,8 @@ services:
     ports:
       - 8081:8081
     depends_on:
+      amisno-infra-eureka:
+        condition: service_healthy
       amisno-config-server:
         condition: service_healthy
-      amisno-cloud-gateway:
-        condition: service_healthy
+
