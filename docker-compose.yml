@@ -32,7 +32,7 @@ services:
       amisno-config-server:
         condition: service_healthy
   amisno-cloud-gateway:
-    image: amisno-cloud-gateway:latest
+    image: fourmipanda/amisno-cloud-gateway:latest
     expose:
       - 9102
     ports:
