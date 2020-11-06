@@ -17,20 +17,6 @@ services:
       timeout: 5s
       interval: 5s
       retries: 10
-  amisno-cloud-gateway:
-    image: fourmipanda/amisno-cloud-gateway:latest
-    expose:
-      - 9102
-    ports:
-      - 9102:9102
-    healthcheck:
-      test: curl -v --silent http://amisno-cloud-gateway:9102/actuator/health 2>&1 | grep UP
-      timeout: 5s
-      interval: 5s
-      retries: 10
-    depends_on:
-      amisno-config-server:
-        condition: service_healthy
   amisno-infra-eureka:
     image: fourmipanda/amisno-infra-eureka:latest
     expose:
@@ -43,6 +29,22 @@ services:
       interval: 5s
       retries: 10
     depends_on:
+      amisno-config-server:
+        condition: service_healthy
+  amisno-cloud-gateway:
+    image: amisno-cloud-gateway:latest
+    expose:
+      - 9102
+    ports:
+      - 9102:9102
+    healthcheck:
+      test: curl -v --silent http://amisno-cloud-gateway:9102/actuator/health 2>&1 | grep UP
+      timeout: 5s
+      interval: 5s
+      retries: 10
+    depends_on:
+      amisno-infra-eureka:
+        condition: service_healthy
       amisno-config-server:
         condition: service_healthy
   amisno-order-service:
