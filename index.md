@@ -34,10 +34,13 @@ La liste des dépendances :
 #### Spring Cloud Configuration
 
 #### Netflix Eureka
+![Logo Netflix Eureka](img/eureka.png)
 
 #### Spring Cloud Gateway
+![Logo Spring Cloud Gateway](img/spring-cloud.png "Spring Cloud Gateway")
 
 #### Netflix Ribbon
+![Logo Netflix Ribbon](img/ribbon.png "Netflix Ribbon")
 
 ### Documentation externe
 
