@@ -1,37 +1,44 @@
-## Welcome to GitHub Pages
+## Projet AMiSNO
 
-You can use the [editor on GitHub](https://github.com/FourmiPanda/amisno-docker-bootstrap/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Pré requis
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Ce projet utilise [docker-compose](https://docs.docker.com/compose/) et des conteneurs disponible sur la [page docker hub](https://hub.docker.com/search?q=fourmipanda&type=image).
 
-### Markdown
+Avant l'installation, [télécharger et installer Docker](https://docs.docker.com/docker-for-windows/install/).
+Le projet a été concue sur la version 19.03.12 de Docker.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### Installation
 
-```markdown
-Syntax highlighted code block
+Installation is done using the
+[`docker-compose up` command](https://docs.docker.com/compose/reference/up/):
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```bash
+$ docker-compose up
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Dépendences
 
-### Jekyll Themes
+#### Spring Cloud Configuration
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/FourmiPanda/amisno-docker-bootstrap/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+#### Netflix Eureka
 
-### Support or Contact
+#### Spring Cloud Gateway
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+#### Netflix Ribbon
+
+### Documentation externe
+
+  * [Docker](https://www.docker.com/) for documentation about docker
+  * [Microservices](https://microservices.io/) for documentation about microservices
+
+### Sécurité
+
+Si vous trouvez un bug, veuillez nous contacter s'il vous plait. :)
+
+### Contributeurs
+
+The authors of AMiSNO are [FourmiPanda](https://github.com/FourmiPanda) &  [Xabibax](https://github.com/Xabibax)
+
+### License
+
+  [MIT](LICENSE)
