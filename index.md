@@ -16,7 +16,7 @@ Installation is done using the
 $ docker-compose up
 ```
 
-### Dépendences
+### Dépendances
 
 La liste des dépendances : 
 
