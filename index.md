@@ -18,6 +18,19 @@ $ docker-compose up
 
 ### Dépendences
 
+La liste des dépendances : 
+
+- https://github.com/FourmiPanda/amisno-docker-bootstrap
+- https://github.com/FourmiPanda/amisno-config-server
+- https://github.com/FourmiPanda/amisno-config-repo
+- https://github.com/FourmiPanda/amisno-app-front
+- https://github.com/FourmiPanda/amisno-infra-eureka
+- https://github.com/FourmiPanda/amisno-spring-gateway
+- https://github.com/Xabibax/amisno-order-service-v3
+- https://github.com/Xabibax/amisno-product-catalog
+
+### Information sur les *Edge Services*
+
 #### Spring Cloud Configuration
 
 #### Netflix Eureka
@@ -28,8 +41,8 @@ $ docker-compose up
 
 ### Documentation externe
 
-  * [Docker](https://www.docker.com/) for documentation about docker
-  * [Microservices](https://microservices.io/) for documentation about microservices
+  * [Docker](https://www.docker.com/)
+  * [Microservices](https://microservices.io/)
 
 ### Sécurité
 
@@ -37,7 +50,7 @@ Si vous trouvez un bug, veuillez nous contacter s'il vous plait. :)
 
 ### Contributeurs
 
-The authors of AMiSNO are [FourmiPanda](https://github.com/FourmiPanda) &  [Xabibax](https://github.com/Xabibax)
+Les auteurs d'AMiSNO sont [FourmiPanda](https://github.com/FourmiPanda) &  [Xabibax](https://github.com/Xabibax)
 
 ### License
 
