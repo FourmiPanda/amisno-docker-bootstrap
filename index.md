@@ -32,15 +32,16 @@ La liste des dépendances :
 ### Information sur les *Edge Services*
 
 #### Spring Cloud Configuration
+<img src="img/spring-cloud.png" width="200" />
 
 #### Netflix Eureka
-![Logo Netflix Eureka](img/eureka.png)
+<img src="img/eureka.png" width="200" />
 
 #### Spring Cloud Gateway
-![Logo Spring Cloud Gateway](img/spring-cloud.png "Spring Cloud Gateway")
+<img src="img/spring-cloud.png" width="200" />
 
 #### Netflix Ribbon
-![Logo Netflix Ribbon](img/ribbon.png "Netflix Ribbon")
+<img src="img/ribbon.png" width="200" />
 
 ### Documentation externe
 
