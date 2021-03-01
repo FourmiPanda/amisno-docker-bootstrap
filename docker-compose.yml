@@ -6,6 +6,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: toor
+      MONGO_INITDB_DATABASE: amisno
+    ports:
+      - 27017:27017
   amisno-config-server:
     image: fourmipanda/amisno-config-server:latest
     expose:
@@ -50,12 +53,29 @@ services:
   amisno-order-service:
     image: fourmipanda/amisno-order-service:latest
     expose:
-      - 8081
+      - 8082
     ports:
-      - 8081:8081
+      - 8082:8082
     depends_on:
       amisno-infra-eureka:
         condition: service_healthy
       amisno-config-server:
         condition: service_healthy
-
+  amisno-catalog-service:
+    image: fourmipanda/amisno-catalog-service:latest
+    expose:
+      - 8090
+    depends_on:
+      amisno-infra-eureka:
+        condition: service_healthy
+      amisno-config-server:
+        condition: service_healthy
+  amisno-catalog-service2:
+    image: fourmipanda/amisno-catalog-service:latest
+    expose:
+      - 8090
+    depends_on:
+      amisno-infra-eureka:
+        condition: service_healthy
+      amisno-config-server:
+        condition: service_healthy
