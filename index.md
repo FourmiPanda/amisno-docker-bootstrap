@@ -12,9 +12,9 @@ Le projet a été concue sur la version 19.03.12 de Docker.
 L'installation se fait via la commande
 [`docker-compose up`](https://docs.docker.com/compose/reference/up/):
 Placer vous dans le répertoires amisno-docker-bootstrap : 
-> amisno-docker-bootstrap
-   |__ ...
-   |__ docker-compose.yml
+> amisno-docker-bootstrap <br>
+   |__ ...<br>
+   |__ docker-compose.yml<br>
 ```bash
 > docker-compose up
 Creating network "amisno-docker-bootstrap_default" with the default driver
@@ -84,7 +84,6 @@ Par exemple :
 Dans l'exemple ci dessus, la classe com.netflix.loadbalancer.WeightedResponseTimeRule est une classe mis à disposition par Ribbon pour faire du load balancing, celle ci est customisable en implémentatant l'interface IRule. Plus d'information [ici](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-ribbon.html).
 
 La stratégie de load balancing par défaut et le [Round-Robin](https://fr.wikipedia.org/wiki/Round-robin_(informatique))
-
 
 ### Documentation externe
 
