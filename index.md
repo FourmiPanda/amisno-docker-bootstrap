@@ -85,11 +85,15 @@ Dans l'exemple ci dessus, la classe com.netflix.loadbalancer.WeightedResponseTim
 
 La stratégie de load balancing par défaut et le [Round-Robin](https://fr.wikipedia.org/wiki/Round-robin_(informatique))
 
+#### Resilience4j
+<img src="img/resilience4j.png" width="200" />
+
 ### Documentation externe
 
   * [Docker](https://www.docker.com/)
   * [Microservices](https://microservices.io/)
   * [Configuration Ribbon](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-ribbon.html)
+  * [Documentation resilience4j](https://resilience4j.readme.io/docs)
   * [Désendettement projet Netflix](https://javaetmoi.com/2019/11/desendettement-de-spring-cloud-netflix/)
 
 ### Sécurité
