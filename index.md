@@ -123,7 +123,7 @@ dependencies {
  }   
  ```
 
-A partir de là, il est possible de configurer les modules dans le fichier de configuration de l'application :
+A partir de là, il est possible de configurer les modules dans le fichier de configuration de l'application (application.yml) :
 
 ```properties
 resilience4j.circuitbreaker:
@@ -145,7 +145,7 @@ resilience4j.circuitbreaker:
       baseConfig: default
  ```
  
- Enfin décorez les fonctions souhaitez avec un module et associez les avec une instance :
+ Enfin il faut décorer les fonctions souhaitées avec un module et les associer avec une instance :
  ```java
     @CircuitBreaker(name = productCatalog)
     @Bulkhead(name = productCatalog)
