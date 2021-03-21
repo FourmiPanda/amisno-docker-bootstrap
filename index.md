@@ -95,7 +95,7 @@ Il permet d'ajouter un comportement aux erreurs renvoyé par l'applicaiton.
 
 Le module principale est le circuit breaker (représenté par son logo), qui simule le comportement d'un circuit électrique avec 3 état :
 * Fermé le courant passe, les fonctions peuvent être appellées
-* Ouvert le courant ne passe pas, l'appel aux fonctions et refusé d'entré afin de gagner du temps sur le renvoie d'erreur
+* Ouvert le courant ne passe pas, l'appel aux fonctions est refusé d'entré afin de gagner du temps sur le renvoie d'erreur
 * Semi-ouvert le courant passe, état de transition où l'appel aux fonctions est autorisé selon certaines conditions avant de basculé dans l'état Ouvert si une erreur survient ou Fermé si aucun erreur n'apparaît
 
 
