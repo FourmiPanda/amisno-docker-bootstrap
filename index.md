@@ -85,11 +85,82 @@ Dans l'exemple ci dessus, la classe com.netflix.loadbalancer.WeightedResponseTim
 
 La stratégie de load balancing par défaut et le [Round-Robin](https://fr.wikipedia.org/wiki/Round-robin_(informatique))
 
+#### Resilience4j
+
+<img src="img/resilience4j.png" width="200" />
+
+Resilience4j est une libraire de Fault Tolerance pour java8.
+
+Il permet d'ajouter un comportement aux erreurs renvoyé par l'applicaiton.
+
+Le module principale est le circuit breaker (représenté par son logo), qui simule le comportement d'un circuit électrique avec 3 état :
+* Fermé le courant passe, les fonctions peuvent être appellées
+* Ouvert le courant ne passe pas, l'appel aux fonctions est refusé d'entré afin de gagner du temps sur le renvoie d'erreur
+* Semi-ouvert le courant passe, état de transition où l'appel aux fonctions est autorisé selon certaines conditions avant de basculé dans l'état Ouvert si une erreur survient ou Fermé si aucun erreur n'apparaît
+
+
+Dans le cadre d'un projet spring boot 2, il suffit d'jouter ces dépendances au fichier de builde (build.gradle dans un projet gradle) :
+
+```gradle
+dependencies {
+    ...
+
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    implementation("io.github.resilience4j:resilience4j-reactor:${resilience4jVersion}")
+    
+    implementation("io.github.resilience4j:resilience4j-all:${resilience4jVersion}") // Optional, only required when you want to use the Decorators class
+    /* To add a specific core-module
+    implementation "io.github.resilience4j:resilience4j-circuitbreaker:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-ratelimiter:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-retry:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-bulkhead:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-cache:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-timelimiter:${resilience4jVersion}"
+    /**/
+ }   
+ ```
+
+A partir de là, il est possible de configurer les modules dans le fichier de configuration de l'application (application.yml) :
+
+```properties
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      minimumNumberOfCalls: 3
+      permittedNumberOfCallsInHalfOpenState: 1
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 10s
+      failureRateThreshold: 20
+      eventConsumerBufferSize: 1
+      recordExceptions:
+        - org.springframework.web.client.HttpServerErrorException
+        - java.util.concurrent.TimeoutException
+        - java.io.IOException
+  instances:
+    productCatalog:
+      baseConfig: default
+ ```
+ 
+ Enfin il faut décorer les fonctions souhaitées avec un module et les associer avec une instance :
+ ```java
+    @CircuitBreaker(name = productCatalog)
+    @Bulkhead(name = productCatalog)
+    @RateLimiter(name = productCatalog)
+    private Phone findOne(Long Id) {
+        ...
+    }
+ ```
+
 ### Documentation externe
 
   * [Docker](https://www.docker.com/)
   * [Microservices](https://microservices.io/)
   * [Configuration Ribbon](https://cloud.spring.io/spring-cloud-netflix/multi/multi_spring-cloud-ribbon.html)
+  * [Documentation resilience4j](https://resilience4j.readme.io/docs)
   * [Désendettement projet Netflix](https://javaetmoi.com/2019/11/desendettement-de-spring-cloud-netflix/)
 
 ### Sécurité
